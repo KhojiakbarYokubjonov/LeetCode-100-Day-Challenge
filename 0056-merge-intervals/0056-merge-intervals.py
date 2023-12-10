@@ -5,6 +5,7 @@ class Solution:
             return []
         if len(intervals) == 1:
             return intervals
+        # sorts intervals by the first value
         intervals = sorted(intervals ,key=lambda l:l[0], reverse=False)
         res = []
         for i in range(1, len(intervals)):
