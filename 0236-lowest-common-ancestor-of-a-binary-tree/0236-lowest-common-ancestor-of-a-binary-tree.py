@@ -10,21 +10,24 @@ class Solution:
         
         def helper(root, p,q):
             if root == None:
-                return None
+                return None,0
             if root.val in (p.val, q.val):
-                return root
+                return root, 1
             
-            nodel = helper(root.left,p,q)
-            noder = helper(root.right,p,q)
+            nodel,count = helper(root.left,p,q)
+            if count == 2: 
+                return nodel,count
+            noder,count2 = helper(root.right,p,q)
             
             if nodel != None and noder != None:
-                return root
+                return root, 2
             if nodel != None:
-                return nodel
+                return nodel,1
             if noder != None:
-                return noder
+                return noder,1
+            return None,0
         
-        node = helper(root,p,q)
+        node,_ = helper(root,p,q)
         return node
             
             
