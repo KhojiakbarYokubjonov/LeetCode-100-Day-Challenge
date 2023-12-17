@@ -14,16 +14,19 @@ class Solution:
         #     if rand_val <= self.weights[i]:
         #         return i
         return self.binary_search()
+    
     def binary_search(self):
         rand_val  = random.randint(1, self.total)
-        low, high = 0, len(self.weights)
+        low, high = 0, len(self.weights) - 1 
         
-        while low < high:
-            middle = low + (high - low) // 2
+        while low <= high:
+            middle = (low + high) // 2
             if rand_val > self.weights[middle]:
                 low = middle + 1
+            elif rand_val < self.weights[middle]:
+                high = middle - 1
             else:
-                high = middle
+                return middle
         return low
         
 
