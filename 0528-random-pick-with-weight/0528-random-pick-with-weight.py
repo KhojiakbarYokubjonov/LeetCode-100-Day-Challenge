@@ -9,10 +9,22 @@ class Solution:
         
 
     def pickIndex(self) -> int:
+        # rand_val  = random.randint(1, self.total)
+        # for i in range(len(self.weights)):
+        #     if rand_val <= self.weights[i]:
+        #         return i
+        return self.binary_search()
+    def binary_search(self):
         rand_val  = random.randint(1, self.total)
-        for i in range(len(self.weights)):
-            if rand_val <= self.weights[i]:
-                return i
+        low, high = 0, len(self.weights)
+        
+        while low < high:
+            middle = low + (high - low) // 2
+            if rand_val > self.weights[middle]:
+                low = middle + 1
+            else:
+                high = middle
+        return low
         
 
 
