@@ -16,14 +16,12 @@ class Solution:
             if current  == "..":
                 if stack: 
                     stack.pop()
-                    continue
                 else: continue
-            if current == ".":
+            elif current == ".":
                 continue
-            if current != "":
+            elif current != "":
                 stack.append(current)
             i += 1
-        print(stack)
         if not stack:
             return "/"
         res = ""
