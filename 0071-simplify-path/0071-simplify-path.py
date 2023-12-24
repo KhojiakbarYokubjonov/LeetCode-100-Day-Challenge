@@ -1,7 +1,5 @@
 class Solution:
     def simplifyPath(self, path: str) -> str:
-        ignore = "."
-        go_back = ".."
         if path == "" or len(path) == 1:
             return "/"
         i = 0
@@ -16,7 +14,6 @@ class Solution:
             if current  == "..":
                 if stack: 
                     stack.pop()
-                else: continue
             elif current == ".":
                 continue
             elif current != "":
