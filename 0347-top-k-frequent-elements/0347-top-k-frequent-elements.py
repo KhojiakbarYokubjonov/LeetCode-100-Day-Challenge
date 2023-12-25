@@ -1,4 +1,7 @@
 class Solution:
+    """
+    Idea: uses the bucket sort algorithm
+    """
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         count = {}
         minn = maxx = None
@@ -8,15 +11,16 @@ class Solution:
                 count[val] = 0
             count[val] += 1
             
-        pairs = [(k,v) for k,v in count.items()]
+        frequencies = [[] for i in range(len(nums)+1)]
         
-        pairs.sort(key = lambda x:x[1], reverse=True)
+        
+        for key, v in count.items():
+            frequencies[v].append(key)
         
         output = []
-        for i in range(k):
-            x,y = pairs[i]
-            output.append(x)
-        
-        return output
             
-        
+        for i in range(len(nums), 0, -1):
+            for key in frequencies[i]:
+                output.append(key)
+                if len(output) == k:
+                    return output
