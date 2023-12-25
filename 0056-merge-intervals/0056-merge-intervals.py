@@ -1,19 +1,24 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        if len(intervals) == 0:
-            return []
-        if len(intervals) == 1:
-            return intervals
-        # sorts intervals by the first value
-        intervals = sorted(intervals ,key=lambda l:l[0], reverse=False)
-        res = [intervals[0]]
-        for x, y in intervals[1:]:
-            prev_y = res[-1][1]
-            if x <= prev_y:
-                res[-1][1] = max(res[-1][1], y)
+        intervals.sort(key = lambda x:x[0])
+        stack = []  
+        last = None
+        
+        for (x,y) in intervals:
+            if not stack:
+                stack.append([x,y])
+                last = [x,y]
             else:
-                res.append([x,y])
-        return res
-            
-            
+                if x <= last[1] and y <= last[1]:
+                    continue
+                elif x <= last[1]:
+                    stack.pop()
+                    stack.append([last[0], y])
+                    last = [last[0], y]
+                else:
+                    stack.append([x,y])
+                    last = [x,y]
+        return stack
+                    
+        
         
