@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    """
+    Idea: use the BFS approach and add the last node of each tree level to the output array
+    """
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root: return []
         nodes = []
