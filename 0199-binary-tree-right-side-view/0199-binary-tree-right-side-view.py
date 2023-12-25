@@ -11,19 +11,16 @@ class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root: return []
         nodes = []
-        queue = [root]
-        while queue:
-            node = queue[-1]
-            nodes.append(node.val)
-            # remove all nodes in queue and add their children
-            size = len(queue)
-            while size > 0:
-                curr = queue.pop(0)
-                if curr.left:
-                    queue.append(curr.left)
-                if curr.right:
-                    queue.append(curr.right)
-                size -= 1
+        def DFS(current, level):
+            if not current:
+                return None
+            if len(nodes)-1 < level:
+                nodes.append(None)
             
+            DFS(current.left, level+1)
+            DFS(current.right, level+1)
+            
+            nodes[level] = current.val
+        DFS(root, 0)
         return nodes
         
