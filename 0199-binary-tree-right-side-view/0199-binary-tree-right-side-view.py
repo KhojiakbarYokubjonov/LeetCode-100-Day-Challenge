@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     """
-    Idea: use the BFS approach and add the last node of each tree level to the output array
+    Solution using the DFS
     """
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root: return []
@@ -14,6 +14,7 @@ class Solution:
         def DFS(current, level):
             if not current:
                 return None
+            # this is a placeholder for the current level, so that we can index into it later
             if len(nodes)-1 < level:
                 nodes.append(None)
             
