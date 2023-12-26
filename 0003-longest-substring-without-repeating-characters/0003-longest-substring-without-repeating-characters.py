@@ -5,7 +5,7 @@ class Solution:
         left = 0
         
         for right in range(len(s)):
-            
+            # deletes all the values added to the set up until [including] the first instance of current duplicate
             while s[right] in chars:
                 chars.remove(s[left])
                 left += 1
