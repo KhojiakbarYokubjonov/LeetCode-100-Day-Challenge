@@ -10,7 +10,6 @@ class Solution:
                 start = pos[s[end]] + 1
                 
                 curr = end - start
-                print(f"start updated to {start}; curr: {curr}; overall: {overall}")
                 pos[s[end]] = end
             pos[s[end]] = end
             curr += 1
