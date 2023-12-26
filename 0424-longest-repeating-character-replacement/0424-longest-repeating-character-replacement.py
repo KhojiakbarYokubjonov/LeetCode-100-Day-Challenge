@@ -12,9 +12,7 @@ class Solution:
             count[ch] += 1
             most_freq = max(most_freq, count[ch])
             
-            length = right - left + 1
-            
-            if (length - most_freq) > k:
+            while (right - left + 1 - most_freq) > k:
                 count[s[left]] -= 1
                 left += 1
             res = max(res, right - left + 1)
