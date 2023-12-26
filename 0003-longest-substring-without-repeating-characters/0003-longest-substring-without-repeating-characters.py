@@ -8,10 +8,10 @@ class Solution:
             if start != end and s[end] in s[start:end]:
                 overall = max(overall, curr)
                 start = pos[s[end]] + 1
-                
-                curr = end - start
+                curr = end - start + 1
                 pos[s[end]] = end
+            else:
+                curr += 1
             pos[s[end]] = end
-            curr += 1
             end += 1
         return max(overall,curr)
