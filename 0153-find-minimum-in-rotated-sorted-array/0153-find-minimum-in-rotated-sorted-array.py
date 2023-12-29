@@ -1,6 +1,5 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        return self.solutionTwo(nums)
         l, r = 0, len(nums) - 1
         
         res = nums[0]
