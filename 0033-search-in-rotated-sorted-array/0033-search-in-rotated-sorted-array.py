@@ -14,10 +14,12 @@ class Solution:
                 l = mid + 1
             else:
                 r = mid
+        # index of the min value in the list
         offset = l
         
         l, r = 0, N-1
         
+        # usual binary search using the index of the min val as an offset
         while l <= r:
             mid = (l + r) // 2
             actual_mid = (offset + mid) % N
