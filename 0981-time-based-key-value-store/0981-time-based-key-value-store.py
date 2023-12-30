@@ -12,6 +12,7 @@ class TimeMap:
         if key not in self.map:
             return ""
         values = self.map[key]
+        # to improve runtime, we can also do a binayr search here
         for i in range(len(values)-1, -1, -1):
             val, t = values[i]
             if t <= timestamp:
