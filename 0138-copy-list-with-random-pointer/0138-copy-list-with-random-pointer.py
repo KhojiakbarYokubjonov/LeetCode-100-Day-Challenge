@@ -17,12 +17,17 @@ class Solution:
         newcopy = new
         mapping = {}
         mapping[curr] = new
+        
+        # creates a copy of the linked list and connects them via the next pointers
         while curr.next:
             new.next = Node(curr.next.val)
+            
+            # maps the old node to its new copy (used to connect the random pointers)
             mapping[curr.next] = new.next
             new = new.next
             curr = curr.next
         
+        # finds the random points of the new linkedlist using the mapping
         for node in mapping:
             copy = mapping[node]
             old_random = node.random
