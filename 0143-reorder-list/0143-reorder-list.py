@@ -8,6 +8,8 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
+        if not head or not head.next:
+            return head
         nodes = []
         
         curr = head
@@ -16,18 +18,40 @@ class Solution:
             nodes.append(curr)
             curr = curr.next
         
-        l, r = 1, len(nodes)-1
-        while l < len(nodes):
-            last = nodes.pop()
-            nodes.insert(l, last)
-            l += 2
-        head = nodes[0]
-        curr = head
+        l, r = 0, len(nodes)-1
+        mid = len(nodes) // 2
         
-        for i in range(1, len(nodes)):
-            nodes[i].next = None
-            curr.next = nodes[i]
-            curr = curr.next
+        head = None
         
+        while l < r:
+            nodes[l].next, nodes[r].next = None, None
+            if not head:
+                curr = head = nodes[l]
+                curr.next = nodes[r]
+                curr = curr.next
+            else:
+                curr.next = nodes[l]
+                curr.next.next = nodes[r]
+                curr = curr.next.next
+            l += 1
+            r -= 1
+        if len(nodes) % 2 == 1:
+            nodes[l].next = None
+            curr.next = nodes[l]
+
         return head
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
             
