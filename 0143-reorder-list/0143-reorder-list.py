@@ -24,13 +24,10 @@ class Solution:
         head = nodes[0]
         curr = head
         
-        for node in nodes:
-            node.next = None
-        print(nodes)
         for i in range(1, len(nodes)):
+            nodes[i].next = None
             curr.next = nodes[i]
             curr = curr.next
-            
         
         return head
             
