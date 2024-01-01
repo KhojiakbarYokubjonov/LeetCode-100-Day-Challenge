@@ -6,15 +6,13 @@
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
        
-        count = n
         def helper(head):
-            nonlocal count
+            nonlocal n
             if not head:
                 return head
             head.next = helper(head.next)
-            print(head)
-            count -= 1
-            if count == 0:
+            n -= 1
+            if n == 0:
                 return head.next
             
         
