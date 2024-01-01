@@ -15,9 +15,9 @@ class Solution:
         while l1 and l2:
             total = l1.val + l2.val + saved
             sec_digit = total % 10
-            first_digit = (total - sec_digit) // 10
+            first_digit = total // 10
             
-            curr_result.next = ListNode(total % 10)
+            curr_result.next = ListNode(sec_digit)
             saved = first_digit
             
             curr_result = curr_result.next
@@ -30,6 +30,7 @@ class Solution:
                 l2.next = ListNode(0)
             
             l1, l2 = l1.next, l2.next
+            
         if saved:
             curr_result.next = ListNode(saved)
         return result.next
