@@ -27,7 +27,9 @@ class Solution:
         def preorderString(root):
             if not root:
                 return "null"
-            
+            """
+            $ sign is used to make the "subRootString in rootString" check more accurate
+            """
             return "$" + str(root.val) + "$" + preorderString(root.left) + preorderString(root.right)
             
             
