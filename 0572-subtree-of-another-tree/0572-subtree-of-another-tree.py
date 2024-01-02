@@ -10,17 +10,10 @@ class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         if not root:
             return root is subRoot
-        self.isEqual = self.isEqual or self.isSameTree(root, subRoot)
-        l = self.isSubtree(root.left, subRoot)
-        r = self.isSubtree(root.right, subRoot)
-        
-        return self.isEqual
-        
-        
-        
-            
-        
-        
+        if self.isSameTree(root, subRoot):
+            return True
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot) 
+         
     
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if p and q:
