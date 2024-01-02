@@ -14,6 +14,9 @@ class Solution:
                 return 0
             left = helper(root.left)
             right = helper(root.right)
+            
+            # diameter may not always pass from the root
+            # so we keep track of the max diam at each sub root
             self.maxD = max(self.maxD, left+right)
             return 1 + max(left, right)
         helper(root)
