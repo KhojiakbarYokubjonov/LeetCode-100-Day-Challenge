@@ -8,6 +8,7 @@ class Solution:
     def __init__(self):
         self.isEqual = False
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        return self.solution2(root, subRoot)
         if not root:
             return root is subRoot
         if self.isSameTree(root, subRoot):
@@ -21,13 +22,13 @@ class Solution:
         return p == q
     
     
-    def solution2(root, subRoot):
+    def solution2(self, root, subRoot):
         
         def preorderString(root):
             if not root:
-                return ""
+                return "null"
             
-            return preorder(root.left) + str(root.val) + preorder(root.right)
+            return "$" + str(root.val) + "$" + preorderString(root.left) + preorderString(root.right)
             
             
         rootString = preorderString(root)
