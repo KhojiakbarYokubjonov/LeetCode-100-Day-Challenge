@@ -19,4 +19,19 @@ class Solution:
         if p and q:
             return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
         return p == q
+    
+    
+    def solution2(root, subRoot):
+        
+        def preorderString(root):
+            if not root:
+                return ""
+            
+            return preorder(root.left) + str(root.val) + preorder(root.right)
+            
+            
+        rootString = preorderString(root)
+        subRootString = preorderString(subRoot)
+        
+        return subRootString in rootString
         
