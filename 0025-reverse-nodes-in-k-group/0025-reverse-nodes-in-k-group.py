@@ -10,16 +10,21 @@ class Solution:
         while head:
             nodes.append(head)
             head = head.next
+            
+        # reverses the given list
         def reverse(l, r):
             while l < r:
                 nodes[l], nodes[r] = nodes[r], nodes[l]
                 l += 1
                 r -= 1
+        
+        # reverses the nodes k at a time
         for i in range(0, len(nodes), k):
             if i+k-1 < len(nodes):
                 reverse(i, i+k-1)
-        head = curr = None
         
+        # recreates the linkedlist
+        head = curr = None
         for n in nodes:
             n.next = None
             if not head:
