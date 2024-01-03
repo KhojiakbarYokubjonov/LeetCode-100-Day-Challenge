@@ -13,11 +13,14 @@ class Solution:
             if not root: root = node = TreeNode(x)
             elif loc[x] < loc[node.val]: 
                 stack.append(node)
-                node.left = node = TreeNode(x)
+                node.left = TreeNode(x)
+                node = node.left
             else: 
                 while stack and loc[stack[-1].val] < loc[x]:
                     node = stack.pop()
-                node.right = node = TreeNode(x)
+                
+                node.right = TreeNode(x)
+                node = node.right
 
         return root
         
