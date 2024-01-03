@@ -13,14 +13,14 @@ class Solution:
             nonlocal count
             if not root:
                 return
-            if root.val >= mx:
+            if mx == None or root.val >= mx:
                 count += 1
                 mx = root.val
             
             helper(root.left, mx)
             helper(root.right, mx)
             
-        helper(root, root.val)
+        helper(root, None)
         
         return count
                 
