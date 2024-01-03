@@ -9,21 +9,19 @@ class Solution:
         # Our counter for the good nodes.
         count = 0
         
-        def helper(node, m):
+        def helper(root, mx):
             nonlocal count
-			# If we run out of nodes return.
-            if not node:
+            if not root:
                 return
-			# If the current node val is >= the largest observed in the path thus far.
-            if node.val >= m:
-			    # Add 1 to the count and update the max observed value.
+            if root.val >= mx:
                 count += 1
-                m = max(m, node.val)
-			# Traverse l and r subtrees.
-            helper(node.left, m)
-            helper(node.right, m)
-                
+                mx = root.val
+            
+            helper(root.left, mx)
+            helper(root.right, mx)
+            
         helper(root, root.val)
+        
         return count
                 
             
