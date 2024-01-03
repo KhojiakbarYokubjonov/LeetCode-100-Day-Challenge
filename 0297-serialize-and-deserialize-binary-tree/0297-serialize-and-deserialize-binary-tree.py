@@ -29,7 +29,6 @@ class Codec:
         :rtype: TreeNode
         """
         data = data.split(",")
-        print(data)
         def helper():
             if data[0] == 'null':
                 data.pop(0)
