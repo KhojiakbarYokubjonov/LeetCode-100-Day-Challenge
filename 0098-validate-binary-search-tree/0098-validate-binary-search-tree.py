@@ -10,7 +10,6 @@ class Solution:
     """
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
-        
         def helper(root, minVal, maxVal):
             if not root:
                 return True
