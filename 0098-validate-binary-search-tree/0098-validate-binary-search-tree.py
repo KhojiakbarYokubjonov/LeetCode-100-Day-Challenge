@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    """
+    Idea: specify min and max boundaries for each node val
+    """
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
         
