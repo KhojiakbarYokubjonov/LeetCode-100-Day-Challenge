@@ -6,22 +6,29 @@ class Trie:
 
     def __init__(self):
         self.table = {}
-        self.entrance = set()
+        # self.entrance = set()
         
 
     def insert(self, word: str) -> None:
-        self.entrance.add(word)
+        # self.entrance.add(word)
         lastTable = self.table
         i = 0
         while i < len(word):
             if word[i] not in lastTable:
-                lastTable[word[i]] = {}
+                lastTable[word[i]] = {"in":False}
             lastTable = lastTable[word[i]]
             i += 1
+        lastTable['in'] = True
         
 
     def search(self, word: str) -> bool:
-        return word in self.entrance
+        lastTable = self.table
+        for ch in word:
+            if ch in lastTable:
+                lastTable = lastTable[ch]
+            else:
+                return False
+        return lastTable['in']
 
     def startsWith(self, prefix: str) -> bool:
         lastTable = self.table
