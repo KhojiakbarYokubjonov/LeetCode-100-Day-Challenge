@@ -5,12 +5,9 @@ class Node:
 class Trie:
 
     def __init__(self):
-        self.table = {}
-        # self.entrance = set()
-        
+        self.table = {}        
 
     def insert(self, word: str) -> None:
-        # self.entrance.add(word)
         lastTable = self.table
         i = 0
         while i < len(word):
