@@ -28,15 +28,17 @@ class WordDictionary:
                     last = last[word[i]]
                         
                 else:
-                    # if i+1 >= len(word): 
-                    #     print(word, i+1, last['in'])
-                    #     return last['in']
+                    # try replacing '.' with a char from dic and call search recursively
                     for ch in last:
                         if ch != 'in':
                             rest = "" if i+1 >= len(word) else word[i+1:]
                             new = ch + rest
                             if helper(new, last): return True
+                    
+                    # at this point none of the chars in dic match
                     return False
+            
+            # check if the word ends here
             return last['in']
         return helper(word, self.table)
             
