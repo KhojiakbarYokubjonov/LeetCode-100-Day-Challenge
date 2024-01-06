@@ -59,7 +59,8 @@ class Solution:
         def DFS(row, col, table, path):
             if (row < 0 or row >= len(board) or col < 0 or col >= len(board[0]) 
                 or board[row][col] not in table 
-                or table[board[row][col]]['ref'] < 1):
+                or table[board[row][col]]['ref'] < 1
+                or board[row][col] == 0):
                 return
             
             string = path +board[row][col]
