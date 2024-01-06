@@ -5,13 +5,11 @@ class Solution:
         for (x, y) in points:
             dis = (x)**2 + (y)**2
             distances.append([dis, x, y])
-        distances.sort(key = lambda x:x[0])
+        heapq.heapify(distances)
         res = []
-        i = 0
-        while i < k:
-            d, x, y = distances[i]
-            res.append([x, y])
-            i += 1
+        for i in range(k):
+            d, x, y = heapq.heappop(distances)
+            res.append([x,y])
             
         return res
 
