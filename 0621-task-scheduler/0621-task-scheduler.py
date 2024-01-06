@@ -14,7 +14,7 @@ class Solution:
         time = 0
         
         while maxHeap or q:
-            time += 1
+            
             if len(maxHeap) > 0:
                 task = heapq.heappop(maxHeap) + 1
                 if task != 0:
@@ -22,6 +22,7 @@ class Solution:
             if q and q[0][1] == time:
                 task = q.popleft()[0]
                 heapq.heappush(maxHeap, task)
+            time += 1
         return time
                 
         
