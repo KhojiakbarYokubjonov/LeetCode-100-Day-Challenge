@@ -37,17 +37,16 @@ class Twitter:
         allFeed = []
         user = self.users[userId]
         for time, tweet in user.feed:
-            allFeed.append((-time, tweet))
+            heapq.heappush(allFeed,(-time, tweet))
           
         for id in user.following:
             u = self.users[id]
             for time,tweet in u.feed:
                 heapq.heappush(allFeed, (-time, tweet))
                 
-        allFeed.sort(key = lambda k:k[0])
         result = []
-        for time, tweet in allFeed:
-            result.append(tweet)
+        while allFeed:
+            result.append(heapq.heappop(allFeed)[1])
             if len(result) == 10:
                 break
         return result
