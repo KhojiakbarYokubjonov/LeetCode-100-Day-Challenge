@@ -43,7 +43,6 @@ class Twitter:
             u = self.users[id]
             for time,tweet in u.feed:
                 heapq.heappush(allFeed, (-time, tweet))
-                
         result = []
         while allFeed:
             result.append(heapq.heappop(allFeed)[1])
