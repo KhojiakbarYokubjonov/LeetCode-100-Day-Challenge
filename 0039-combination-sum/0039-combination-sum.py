@@ -4,20 +4,18 @@ class Solution:
         path = []
         if candidates == []:
             return []
-        def DFS(index):
-            total = sum(path)
-            if total == target:
-                res.append(path.copy())
-                return
-            if total > target or index >= len(candidates):
+        def DFS(nums, path, target):
+            
+            if target < 0:
                 return
             
-            path.append(candidates[index])
+            if target == 0:
+                res.append(path)
+                return
             
-            DFS(index)
-            path.pop()
-            DFS(index + 1)
-        DFS(0)
+            for i in range(len(nums)):
+                DFS(nums[i:], path+[nums[i]], target - nums[i])
+        DFS(candidates, [], target)
         
         return res
         
