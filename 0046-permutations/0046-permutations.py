@@ -1,19 +1,13 @@
 class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        
-        res = []
-        def DFS(nums,perm):
-            if len(perm) == len(nums):
-                res.append(perm.copy())
-                return
-            
-            for n in nums:
-                if n not in perm:
-                    perm.append(n)
-                    DFS(nums, perm)
-                    perm.pop()
-        DFS(nums, [])
-        return res
-                
-                
+    def permute(self, nums):
+        perms = [[]]   
+        for n in nums:
+            new_perms = []
+            for perm in perms:
+                for i in range(len(perm)+1):   
+                    new_perms.append(perm[:i] + [n] + perm[i:])   ###insert n
+                    print(new_perms)
+            perms = new_perms
+        return perms
+
         
