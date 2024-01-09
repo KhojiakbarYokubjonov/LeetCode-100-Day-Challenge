@@ -13,10 +13,9 @@ class Solution:
                 return
             
             path.append(candidates[index])
+            
             DFS(index)
-            
             path.pop()
-            
             DFS(index + 1)
         DFS(0)
         
