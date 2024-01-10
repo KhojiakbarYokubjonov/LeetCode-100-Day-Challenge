@@ -6,12 +6,8 @@ class Solution:
                 # print("found")
                 return True
             
-            if ( row < 0 or row >= len(board) or col < 0 or col >= len(board[0]) ):
-                return False
-            
-            
-            
-            if word[0] != board[row][col]:
+            if ( row < 0 or row >= len(board) or col < 0 or col >= len(board[0]) 
+                or word[0] != board[row][col]):
                 return False
             
             ch = board[row][col]
