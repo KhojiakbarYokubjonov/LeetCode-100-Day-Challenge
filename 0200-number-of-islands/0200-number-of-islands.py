@@ -5,9 +5,9 @@ class Solution:
         count = 0
         seen = set()
         def dfs(row, col):
-            if row < 0 or row >= len(grid) or col < 0 or col >= len(grid[row]) or grid[row][col] == '0' or grid[row][col] == 'x':
+            if row < 0 or row >= len(grid) or col < 0 or col >= len(grid[row]) or grid[row][col] == '0':
                 return 0
-            grid[row][col] = 'x'
+            grid[row][col] = '0'
             return (1   + dfs(row, col-1)
                         + dfs(row, col+1)   
                         + dfs(row-1, col)
@@ -16,7 +16,8 @@ class Solution:
         
         for i in range(len(grid)):
             for j in range(len(grid[i])):
-                if grid[i][j] == '1' and dfs(i,j) > 0:
+                if grid[i][j] == '1':
+                    dfs(i, j)
                     count += 1
         return count
         
