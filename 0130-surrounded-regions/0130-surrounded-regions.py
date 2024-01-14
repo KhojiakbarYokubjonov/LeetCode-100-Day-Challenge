@@ -1,13 +1,13 @@
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
         """
-        Do not return anything, modify board in-place instead.
+        Idea: call DFS on all border Os and mark them.
+        Then turn all the remaining Os to X and revert the marked ones
         """
         
         M = len(board)
         N = len(board[0])
         
-        # top & bottom
         borderOs = set()
         for col in range(N):
             if board[0][col] == "O":
