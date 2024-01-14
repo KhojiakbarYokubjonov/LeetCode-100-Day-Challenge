@@ -23,7 +23,6 @@ class Solution:
         
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         
-        print(rotten)
         while rotten != []:
             size = len(rotten)
             while size > 0:
@@ -32,31 +31,28 @@ class Solution:
                 if i-1 >= 0 and grid[i-1][j] == 1 and (i-1,j) not in visited:
                     rotten.append((i-1, j))
                     visited.add((i-1,j))
+                    fresh -= 1
                 if i+1 < M and grid[i+1][j] == 1 and (i+1,j) not in visited:
                     rotten.append((i+1, j))
                     visited.add((i+1, j))
+                    fresh -= 1
                 if j+1 < N and grid[i][j+1] == 1 and (i, j+1) not in visited:
                     rotten.append((i, j+1))
                     visited.add((i, j+1))
+                    fresh -= 1
                 if j-1 >= 0 and grid[i][j-1] == 1 and (i, j-1) not in visited:
                     rotten.append((i, j-1))
                     visited.add((i, j-1))
+                    fresh -= 1
                 size -= 1
-            print(rotten)
             minutes += 1
             
-        for i in range(M):
-            for j in range(N):
-                if grid[i][j] == 1:
-                    return -1
-        return minutes
+        # for i in range(M):
+        #     for j in range(N):
+        #         if grid[i][j] == 1:
+        #             return -1
+        print(fresh)
+        return -1 if fresh > 0 else minutes
 
-        
-"""
-[[2,2],
-[1,1],
-[0,0],
-[2,0]]
-"""
             
         
