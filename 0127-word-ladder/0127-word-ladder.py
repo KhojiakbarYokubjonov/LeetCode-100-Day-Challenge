@@ -19,13 +19,13 @@ class Solution:
                     new = w1 + ch + w2
                     if new in wordList and new != w:
                         graph[w].add(new)
-        q = [(beginWord, 0)]
+        q = [(beginWord, 1)]
         visited = set()
         
         while q:
             node, step = q.pop(0)
             if node == endWord:
-                return step + 1
+                return step
             visited.add(node)
             for v in graph[node]:
                 if v not in visited:
