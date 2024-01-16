@@ -12,7 +12,7 @@ class Solution:
             p = parent[n]
             
             while p != parent[p]:
-                parent[p] = parent[parent[p]]
+                # parent[p] = parent[parent[p]]
                 p = parent[p]
             return p
         
