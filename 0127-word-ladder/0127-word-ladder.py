@@ -4,8 +4,8 @@ class Solution:
     b = chr(asciiCode + 1)
     """
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
-        # if endWord not in wordList:
-        #     return 0
+        if endWord not in wordList:
+            return 0
         alphabet = "abcdefghijklmnopqrstuvwxyz"
         
         graph = collections.defaultdict(set)
