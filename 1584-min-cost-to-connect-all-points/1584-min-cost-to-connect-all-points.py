@@ -1,7 +1,18 @@
 class Solution:
+    """
+    Idea: calculate all the edge weights and find MST cost using Prim's algorithm
+    """
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        adjList = collections.defaultdict(list)
+        
+        def find(v):
+            if v != parent[v]:
+                parent[v] = find(parent[v])
+            return parent[v]
+    
+    
         n = len(points)
+        heap = []
+        parent = [i for i in range(len(points) + 1)]
         
         for i in range(len(points)):
             x1, y1 = points[i][0], points[i][1]
@@ -9,23 +20,22 @@ class Solution:
                 x2, y2 = points[j][0], points[j][1]
                 
                 distance = abs(x1 - x2) + abs(y1 - y2)
-                adjList[i].append((distance, j))
-                adjList[j].append((distance, i))
+                heapq.heappush(heap, (distance, i, j))
         
         cost = 0
-        visited = set()
-        heap = [(0, 0)] # dist, vertex
+        while heap:
+            dis, v1, v2 = heapq.heappop(heap)
+            rootv1, rootv2 = find(v1), find(v2)
+            # if the two vertices are not connected, connect them
+            if rootv1 != rootv2:
+                parent[rootv1] = rootv2
+                cost += dis
+                
         
-        while len(visited) < n:
-            d, vertex = heapq.heappop(heap)
-            if vertex in visited:
-                continue
-            visited.add(vertex)
-            cost += d
-            for node in adjList[vertex]:
-                if node[1] not in visited:
-                    heapq.heappush(heap, node)
+        
         return cost
+    
+    
             
         
         
