@@ -1,6 +1,6 @@
 class Solution:
     """
-    Idea: calculate all the edge weights and find MST cost using Prim's algorithm
+    Idea: calculate all the edge weights and find MST cost using Prim's or kruskal's algorithms
     """
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         
@@ -40,11 +40,8 @@ class Solution:
         cost = 0
         while heap:
             dis, v1, v2 = heapq.heappop(heap)
-            # if the two vertices are not connected, connect them
             if union(v1, v2):
                 cost += dis
-                
-        
         
         return cost
     
