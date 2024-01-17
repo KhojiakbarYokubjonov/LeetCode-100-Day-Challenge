@@ -26,13 +26,15 @@ class Solution:
             if rootA == rootB:
                 return False
             
-            # decide the parent based on the ranks
-            if rank[rootA] > rank[rootB]:
-                parent[rootB] = rootA
-                rank[rootA] += rank[rootB]
-            else:
-                parent[rootA] = rootB
-                rank[rootB] += rank[rootA]
+            parent[rootA] = rootB
+            
+            # # decide the parent based on the ranks
+            # if rank[rootA] > rank[rootB]:
+            #     parent[rootB] = rootA
+            #     rank[rootA] += rank[rootB]
+            # else:
+            #     parent[rootA] = rootB
+            #     rank[rootB] += rank[rootA]
             return True
         
         
