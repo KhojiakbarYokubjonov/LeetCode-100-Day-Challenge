@@ -23,8 +23,7 @@ class Solution:
             for v, vt in adjList[u]:
                 if v not in time:
                     heapq.heappush(heap, (t + vt, v))
-        print(visited)
-        print(adjList)
+   
         if len(visited) < n:
             return -1
         return maxTime
