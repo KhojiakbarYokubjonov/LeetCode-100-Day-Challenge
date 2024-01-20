@@ -1,4 +1,7 @@
 class Solution:
+    """
+    Uses bellman ford algorithm
+    """
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         cheapest = {i : math.inf for i in range(1, n+1)}
         cheapest[k] = 0
