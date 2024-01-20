@@ -1,32 +1,22 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        maxTime = 0
-        adjList = collections.defaultdict(list)
+        cheapest = {i : math.inf for i in range(1, n+1)}
+        cheapest[k] = 0
+        adjlist = collections.defaultdict(list)
         
-        for u, v, time in times:
-            adjList[u].append((v, time))
+        for a, b, price in times:
+            adjlist[a].append((b, price))
         
-            
-        heap = [(0, k)]
-        visited = set()
-        
-        time = {}
-        
-        while heap:
-            t, u = heapq.heappop(heap)
-            if u in time:
-                continue
-            time[u] = t
-            maxTime = max(t, maxTime)
-            visited.add(u)
-            
-            for v, vt in adjList[u]:
-                if v not in time:
-                    heapq.heappush(heap, (t + vt, v))
-   
-        if len(visited) < n:
+
+        for i in range(n):
+            for u in range(1,n+1):
+                for v, price in adjlist[u]:
+                    cheapest[v] = min(cheapest[v], cheapest[u] + price)
+        print(cheapest)
+        mintime = max(cheapest.values())
+        if mintime == math.inf:
             return -1
-        return maxTime
+        return mintime
             
         
         
