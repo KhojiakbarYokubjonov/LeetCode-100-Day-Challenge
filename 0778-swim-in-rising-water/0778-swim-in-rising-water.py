@@ -9,9 +9,7 @@ class Solution:
         directions = [(-1,0), (1,0), (0,-1), (0,1)]
         while heap:
             el, x, y = heapq.heappop(heap)
-            visited.add((x, y))
             maxelevation = max(maxelevation, el)
-            
             if (x,y) == (N-1, N-1):
                 break
             for r, c in directions:
