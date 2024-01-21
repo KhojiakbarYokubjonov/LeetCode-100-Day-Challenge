@@ -7,19 +7,13 @@ class Solution:
         graph = collections.defaultdict(list)
         trips = len(tickets)
         for a, b in tickets:
-            # heapq.heappush(graph[a], b)
-            graph[a].append(b)
-            
-            
-        for node in graph:
-            graph[node].sort()
+            heapq.heappush(graph[a], b)
             
         output = []
         
         def dfs(node):
             while graph[node]:
-                # dfs(heapq.heappop(graph[node]))
-                dfs(graph[node].pop(0))
+                dfs(heapq.heappop(graph[node]))
             output.append(node)
         dfs("JFK")
         
