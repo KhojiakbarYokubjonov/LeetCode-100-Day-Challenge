@@ -14,7 +14,7 @@ class Solution:
             dp[i] = max(dp[i-1], nums[i] + dp[i-2])
         
         # print(dp)
-        return max(dp[-1], dp[-2])
+        return dp[-1]
         
             
                 
