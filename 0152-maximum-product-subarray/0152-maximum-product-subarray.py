@@ -3,7 +3,23 @@ class Solution:
     Idea: have 2 dp arrays: maxdp and mindp
     """
     def maxProduct(self, nums: List[int]) -> int:
-  
+        """
+        same solution without conditions
+        """
+        maxprod = mindp = maxdp = nums[0]
+        
+        for i in range(1, len(nums)):
+            maxcopy = maxdp
+            maxdp = max(maxdp * nums[i], mindp * nums[i], nums[i])
+            mindp = min(mindp * nums[i], maxcopy * nums[i], nums[i])                
+            maxprod = max(maxprod, maxdp)
+        return maxprod
+    
+    
+    def solution2(nums):
+        """
+        same as the below solution but without arrays
+        """
         maxprod = mindp = maxdp = nums[0]
         
         for i in range(1, len(nums)):
@@ -16,6 +32,7 @@ class Solution:
                 mindp = min(maxcopy * nums[i], nums[i])
             maxprod = max(maxprod, maxdp)
         return maxprod
+    
     
     def solutionWithArrays(nums):
         mindp = [0] * len(nums)
