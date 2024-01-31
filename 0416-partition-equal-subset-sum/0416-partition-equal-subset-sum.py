@@ -11,6 +11,7 @@ class Solution:
         for i in range(N):
             nextDP = set()
             for val in dp:
+                if val == half or val + nums[i] == half: return True
                 nextDP.add(val)
                 nextDP.add(val + nums[i])
             dp = nextDP
