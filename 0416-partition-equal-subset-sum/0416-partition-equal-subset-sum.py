@@ -7,7 +7,7 @@ class Solution:
         if total % 2 != 0: return False
         half = total // 2
         
-        dp = {0}
+        dp = {0} # 0 for when we dont include anything
         for i in range(N):
             nextDP = set()
             for val in dp:
