@@ -15,12 +15,11 @@ class Solution:
             dfs(x+1,y)
             dfs(x,y+1)
             
-            paths = 0
+            dp[x][y] = 0
             if x+1 < m:
-                paths += dp[x+1][y]
+                dp[x][y] += dp[x+1][y]
             if y+1 < n:
-                paths += dp[x][y+1]
-            dp[x][y] = paths
+                dp[x][y] += dp[x][y+1]
         
         dfs(0, 0)
         print(dp)
