@@ -1,4 +1,8 @@
 class Solution:
+    """
+    runtime: O(n)
+    space: O(n)
+    """
     def maxProfit(self, prices: List[int]) -> int:
         
         dp = {} # key = (i, buy or sell) -> val = max profit
