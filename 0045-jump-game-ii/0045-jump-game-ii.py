@@ -7,6 +7,8 @@ class Solution:
             for j in range(1, nums[i]+1):
                 if i+j < len(dp):
                     dp[i+j] = min(dp[i+j], 1+dp[i])
+                if dp[-1] < math.inf:
+                    return dp[-1]
         # print(dp)
         return dp[-1]
                 
