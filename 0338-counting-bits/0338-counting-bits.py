@@ -6,7 +6,6 @@ class Solution:
         offset = 1
         
         for i in range(1, n+1):
-            print(offset)
             if i == offset * 2:
                 offset = i
             countofones[i] = 1 + countofones[i - offset]
