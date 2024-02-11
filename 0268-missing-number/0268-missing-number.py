@@ -4,8 +4,6 @@ class Solution:
         N = len(nums)
         for n in range(1, N+1):
             missingnum ^= n
-            
-        for n in range(1, N+1):
             missingnum ^= nums[n-1]
         return missingnum
         
