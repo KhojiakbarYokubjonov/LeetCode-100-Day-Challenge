@@ -8,6 +8,7 @@ class Solution:
             if (i, j) in dp:
                 return dp[(i, j)]
             
+            
             top = bottom = left = right = 0
             if i+1 < len(matrix) and matrix[i][j] < matrix[i+1][j]:
                 top = 1 + dfs(i+1, j, matrix[i][j])
@@ -25,7 +26,8 @@ class Solution:
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
                 mxpath = max(dfs(i,j, -1), mxpath)
-        return mxpath+1
+                
+        return mxpath + 1 # add +1 to include the starting cell for the path
                 
             
             
