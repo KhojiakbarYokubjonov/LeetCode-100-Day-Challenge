@@ -3,8 +3,7 @@ class Solution:
         dp = {}
         
         def dfs(i, j, prev):
-            if (i < 0 or j < 0 or i >= len(matrix) or j >= len(matrix[0]) or 
-                matrix[i][j] < prev):
+            if (i < 0 or j < 0 or i >= len(matrix) or j >= len(matrix[0]) or matrix[i][j] <= prev):
                 return 0
             if (i, j) in dp:
                 return dp[(i, j)]
