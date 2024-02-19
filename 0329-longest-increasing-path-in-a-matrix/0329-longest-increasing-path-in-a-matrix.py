@@ -19,15 +19,14 @@ class Solution:
             if j-1 >= 0 and matrix[i][j] < matrix[i][j-1]:
                 left = 1 + dfs(i, j-1, matrix[i][j])
             
-            dp[(i, j)] = max(top, bottom, left, right)
+            dp[(i, j)] = max(1, top, bottom, left, right)
             return dp[(i, j)]
         
-        mxpath = -1
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
-                mxpath = max(dfs(i,j, -1), mxpath)
+                dfs(i, j, -1)
                 
-        return mxpath + 1 # add +1 to include the starting cell for the path
+        return max(dp.values())
                 
             
             
