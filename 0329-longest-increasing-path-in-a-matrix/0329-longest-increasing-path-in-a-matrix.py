@@ -22,11 +22,12 @@ class Solution:
             dp[(i, j)] = max(1, top, bottom, left, right)
             return dp[(i, j)]
         
+        mxpath = -1
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
-                dfs(i, j, -1)
+                mxpath = max(mxpath, dfs(i, j, -1))
                 
-        return max(dp.values())
+        return mxpath
                 
             
             
